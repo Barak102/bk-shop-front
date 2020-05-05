@@ -1,0 +1,13 @@
+<div class="login-container">
+<h2>Login Component</h2>
+<div class="fields">
+  <div class="field-name">Username</div>
+  <div class="field-input"><input type="text" [(ngModel)]="credentials.username" placeholder="Username"/></div>
+  <div class="field-name">Password</div>
+  <div class="field-input"><input type="password" [(ngModel)]="credentials.password" placeholder="Password"/></div>
+  <div class="submit-fields">
+    <button class="login-button">Login</button>
+    <div class="links"><a (click)="register()">Not Registered yet?</a> <div class="separator">|</div><a (click)="forgot()">Forgot Password?</a></div>
+  </div>
+</div>
+</div>
