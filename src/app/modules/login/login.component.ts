@@ -16,12 +16,6 @@ export class LoginComponent implements OnInit {
     remember: false
   };
 
-  // public credentialForm: any = new FormGroup({
-  //   name: new FormControl(this.credentials.username, [
-  //     Validators.required,
-  //     Validators.minLength(4),
-  //   ])
-  // });
 
 
 

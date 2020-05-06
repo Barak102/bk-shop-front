@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { UserDetailsService } from './shared/services/user-details.service';
 
 
 @Component({
@@ -10,12 +11,13 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent implements OnInit {
   title = 'This is the title';
 
-constructor(private titleService: Title) {
+constructor(private titleService: Title, private userDetailsService: UserDetailsService) {
 
 }
 
 
   ngOnInit(): void {
     this.titleService.setTitle(this.title);
+    this.userDetailsService.recieveUserDetails();
   }
 }

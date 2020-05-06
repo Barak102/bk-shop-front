@@ -7,6 +7,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { HomeComponent } from './modules/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { StartWithLetterDirective } from './shared/validators/start-with-letter.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StartWithLetterDirective } from './shared/validators/start-with-letter.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
