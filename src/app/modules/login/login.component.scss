@@ -1,14 +1,15 @@
 .login-container {
-  width: 40vw;
+  width: 30vw;
+  min-width: 450px;
   height: 380px;
   position: absolute;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   top: 50%;
-  border: #000000 1px solid;
+  border: #949494 1px solid;
   border-radius: 5px;
   padding: 10px;
-
+  font-family: "Ariel";
   h2 {
     display: flex;
     justify-content: center;
@@ -18,21 +19,53 @@
   .fields {
     display: inline-block;
     width: 100%;
-    .field-name, .field-input {
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .field-input {
-      margin-top: 5px;
-      margin-bottom: 5px;
-      input {
-        width: 100%;
-        border: #000000 1px solid;
-        height: 20px;
-        font-size: 20px;
-        font-family: sans-serif;
+    .field {
+      padding-top: 10px;
+      &.remember {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .field-name,
+      .field-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        label {
+          font-size: 24px;
+        }
+      }
+      .field-validators {
+        color: #ff8484;
+        height: 18px;
+      }
+      .field-input {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        input {
+          &[type="text"],
+          &[type="password"] {
+            height: 30px;
+            padding-left: 10px;
+            border-radius: 3px;
+          }
+          &.invalid-input {
+            border-color: #ff8484;
+          }
+          &:focus {
+            outline: none;
+            &:not(.invalid-input) {
+              border-color: #bab7ea;
+            }
+          }
+          width: 100%;
+          border: #949494 1px solid;
+          height: 20px;
+          font-size: 20px;
+          font-family: sans-serif;
+        }
       }
     }
     .submit-fields {

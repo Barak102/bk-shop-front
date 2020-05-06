@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
 import { HomeComponent } from './modules/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { StartWithLetterDirective } from './shared/validators/start-with-letter.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    StartWithLetterDirective
   ],
   imports: [
     BrowserModule,

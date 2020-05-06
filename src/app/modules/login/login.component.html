@@ -1,13 +1,101 @@
 <div class="login-container">
-<h2>Login Component</h2>
-<div class="fields">
-  <div class="field-name">Username</div>
-  <div class="field-input"><input type="text" [(ngModel)]="credentials.username" placeholder="Username"/></div>
-  <div class="field-name">Password</div>
-  <div class="field-input"><input type="password" [(ngModel)]="credentials.password" placeholder="Password"/></div>
-  <div class="submit-fields">
-    <button class="login-button">Login</button>
-    <div class="links"><a (click)="register()">Not Registered yet?</a> <div class="separator">|</div><a (click)="forgot()">Forgot Password?</a></div>
-  </div>
-</div>
+  <h2>BK e-commerce Login</h2>
+  <form #loginForm="ngForm">
+    <!-- ngForm: {{loginForm.value | json}}
+    classModel: {{credentials | json}} -->
+    <div class="fields">
+      <div class="field">
+        <div class="field-name">
+          <label for="username">
+            Username
+          </label>
+        </div>
+            <div class="field-validators">
+              <ng-container *ngIf="username.invalid && username.touched">
+                <small *ngIf="username.errors?.required">
+                  Username is required
+                </small>
+                <small *ngIf="username.errors?.minlength">
+                  Username must include at least 3 letters
+                </small>
+              </ng-container>
+            </div>
+        <!-- {{ username.errors?.appStartWithLetter }}
+        <div
+          class="field-alert"
+          *ngIf="username.invalid && (username.dirty || username.touched)"
+        >
+          Invalid
+        </div> -->
+
+
+        <!-- untouched: {{username.untouched}}
+        pristine: {{username.pristine}}
+        dirty: {{username.dirty}}
+        valid: {{username.valid}}
+        invalid: {{username.invalid}} -->
+        <div class="field-input">
+          <input
+          name="username"
+          #username="ngModel"
+          id="username"
+          type="text"
+          placeholder="Username"
+          [(ngModel)]="credentials.username"
+          required
+          minlength="3"
+          [ngClass]="{'invalid-input': username.invalid && username.touched}"
+          />
+          <!-- appStartWithLetter -->
+          <!-- #username="ngModel"
+          [(ngModel)]="credentials.username" -->
+
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-name">
+          <label for="password">
+          Password
+          </label>
+        </div>
+        <div class="field-validators">
+          <ng-container *ngIf="password.invalid && password.touched">
+            <small *ngIf="password.errors?.required">
+              Password is required
+            </small>
+            <small *ngIf="password.errors?.minlength">
+              Password must include at least 3 characters
+            </small>
+          </ng-container>
+        </div>
+        <div class="field-input">
+          <input
+          name="password"
+          id="password"
+            type="password"
+            placeholder="Password"
+            #password="ngModel"
+            [(ngModel)]="credentials.password"
+            required
+            minlength="5"
+            [ngClass]="{'invalid-input': password.invalid && password.touched}"
+            />
+          </div>
+          <div class="field remember">
+            <input type="checkbox" [(ngModel)]="credentials.remember" name="remember" id="remember"><label for="remember">
+              Remember me
+            </label>
+          </div>
+          <!-- [(ngModel)]="credentials.password" -->
+      </div>
+      <div class="submit-fields">
+        <button class="login-button" [disabled]="loginForm.invalid" (click)="loginClick()">Login</button>
+        <div class="links">
+          <a (click)="register()">Not Registered yet?</a>
+          <div class="separator">|</div>
+          <a (click)="forgot()">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
