@@ -1,6 +1,6 @@
 <div class="login-container">
   <h2>BK e-commerce Login</h2>
-  <form #loginForm="ngForm">
+  <form #loginForm="ngForm" (ngSubmit)="loginSubmit()" novalidate>
     <!-- ngForm: {{loginForm.value | json}}
     classModel: {{credentials | json}} -->
     <div class="fields">
@@ -89,7 +89,8 @@
           <!-- [(ngModel)]="credentials.password" -->
       </div>
       <div class="submit-fields">
-        <button class="login-button" [disabled]="loginForm.invalid" (click)="loginClick()">Login</button>
+        <button class="login-button" [disabled]="loginForm.invalid || isLoading">Login</button>
+        <div class="server-message" *ngIf="serverResponse.error && !isLoading">Username or password is incorrect</div>
         <div class="links">
           <a (click)="register()">Not Registered yet?</a>
           <div class="separator">|</div>

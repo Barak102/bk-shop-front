@@ -11,8 +11,7 @@ export class UserDetailsService {
     UserDetails | boolean
   > = new BehaviorSubject<UserDetails | boolean>(null);
 
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient) { }
   recieveUserDetails(): void {
     this.http.get("http://localhost:3000/auth/userdetails").subscribe(
       (auth: any) => {

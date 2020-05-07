@@ -1,3 +1,5 @@
+import { LoginCredentialsResponse } from './models/LoginResponse';
+import { LoginService } from './services/login.service';
 import { StartWithLetterDirective } from './../../shared/validators/start-with-letter.directive';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -15,13 +17,17 @@ export class LoginComponent implements OnInit {
     password: '',
     remember: false
   };
+  public serverResponse: LoginCredentialsResponse = null;
 
+  public isLoading = false;
 
-
-
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
+    this.loginService.loginSubject.subscribe(auth => {
+      this.serverResponse = auth;
+      this.isLoading = false;
+    });
   }
 
   register(): void {
@@ -32,8 +38,10 @@ export class LoginComponent implements OnInit {
     console.log('Forgot password clicked!');
   }
 
-  loginClick(): void {
-    console.log('Login button clicked!');
+  loginSubmit(): void {
+    this.isLoading = true;
+    this.loginService.loginUser(this.credentials);
+    console.log('Login button clicked!', this.credentials);
   }
 
 }
